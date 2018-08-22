@@ -11,7 +11,7 @@ public class JdromedaNature implements IProjectNature {
 	/**
 	 * ID of this project nature
 	 */
-	public static final String NATURE_ID = "jdromeda-plugin.jdromedaNature";
+	public static final String ID = "jdromeda-plugin.jdromedaNature";
 
 	private IProject project;
 
@@ -21,7 +21,7 @@ public class JdromedaNature implements IProjectNature {
 		ICommand[] commands = desc.getBuildSpec();
 
 		for (int i = 0; i < commands.length; ++i) {
-			if (commands[i].getBuilderName().equals(JdromedaBuilder.BUILDER_ID)) {
+			if (commands[i].getBuilderName().equals(JdromedaBuilder.ID)) {
 				return;
 			}
 		}
@@ -29,7 +29,7 @@ public class JdromedaNature implements IProjectNature {
 		ICommand[] newCommands = new ICommand[commands.length + 1];
 		System.arraycopy(commands, 0, newCommands, 0, commands.length);
 		ICommand command = desc.newCommand();
-		command.setBuilderName(JdromedaBuilder.BUILDER_ID);
+		command.setBuilderName(JdromedaBuilder.ID);
 		newCommands[newCommands.length - 1] = command;
 		desc.setBuildSpec(newCommands);
 		project.setDescription(desc, null);
@@ -40,7 +40,7 @@ public class JdromedaNature implements IProjectNature {
 		IProjectDescription description = getProject().getDescription();
 		ICommand[] commands = description.getBuildSpec();
 		for (int i = 0; i < commands.length; ++i) {
-			if (commands[i].getBuilderName().equals(JdromedaBuilder.BUILDER_ID)) {
+			if (commands[i].getBuilderName().equals(JdromedaBuilder.ID)) {
 				ICommand[] newCommands = new ICommand[commands.length - 1];
 				System.arraycopy(commands, 0, newCommands, 0, i);
 				System.arraycopy(commands, i + 1, newCommands, i,

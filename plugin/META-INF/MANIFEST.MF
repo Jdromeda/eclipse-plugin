@@ -7,6 +7,22 @@ Bundle-Vendor: Benjamin Ledel
 Require-Bundle: org.eclipse.core.resources,
  org.eclipse.core.runtime,
  org.eclipse.ui,
- org.eclipse.debug.ui
+ org.eclipse.debug.ui,
+ org.eclipse.ui.console,
+ org.eclipse.jdt;bundle-version="3.14.0",
+ org.eclipse.jdt.ui;bundle-version="3.14.0",
+ org.eclipse.jdt.core;bundle-version="3.14.0"
 Automatic-Module-Name: jdromeda-plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: lib/dependency.jar,
+ external:$JAVA_HOME$/../lib/tools.jar,
+ external:$JAVA_HOME$/lib/tools.jar,
+ external:$JAVA_HOME$/../Classes/classes.jar,
+ external:$JAVA_HOME$/Classes/classes.jar,
+ external:$java.home$/../lib/tools.jar,
+ external:$java.home$/lib/tools.jar,
+ external:$java.home$/../Classes/classes.jar,
+ external:$java.home$/Classes/classes.jar,
+ .
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: jdromedaplugin.JdromedaPlugin

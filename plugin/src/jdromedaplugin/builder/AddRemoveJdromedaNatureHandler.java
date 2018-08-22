@@ -7,9 +7,13 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.handlers.HandlerUtil;
+
+import jdromedaplugin.preferences.Preferences;
+import jdromedaplugin.preferences.ProjectPreferenceStore;
 
 public class AddRemoveJdromedaNatureHandler extends AbstractHandler {
 
@@ -52,7 +56,7 @@ public class AddRemoveJdromedaNatureHandler extends AbstractHandler {
 		String[] natures = description.getNatureIds();
 
 		for (int i = 0; i < natures.length; ++i) {
-			if (JdromedaNature.NATURE_ID.equals(natures[i])) {
+			if (JdromedaNature.ID.equals(natures[i])) {
 				// Remove the nature
 				String[] newNatures = new String[natures.length - 1];
 				System.arraycopy(natures, 0, newNatures, 0, i);
@@ -66,8 +70,9 @@ public class AddRemoveJdromedaNatureHandler extends AbstractHandler {
 		// Add the nature
 		String[] newNatures = new String[natures.length + 1];
 		System.arraycopy(natures, 0, newNatures, 0, natures.length);
-		newNatures[natures.length] = JdromedaNature.NATURE_ID;
+		newNatures[natures.length] = JdromedaNature.ID;
 		description.setNatureIds(newNatures);
 		project.setDescription(description, null);
+	
 	}
 }

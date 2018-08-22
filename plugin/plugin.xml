@@ -48,6 +48,12 @@
             name="Sample Command">
       </command>
    </extension>
+      <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="jdromedaplugin.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
@@ -77,7 +83,7 @@
    <extension
          point="org.eclipse.ui.propertyPages">
       <page
-            class="jdromedaplugin.properties.jdromedaPage"
+            class="jdromedaplugin.properties.JdromedaProjectPage"
             icon="resources/logo_16.png"
             id="jdromedaplugin.properties.samplePropertyPage"
             name="Jdromeda Framework"
@@ -120,10 +126,7 @@
            <with variable="selection">
            <count value="1"/>
           <iterate>
-            <adapt type="org.eclipse.core.resources.IResource">
-                <and>
-                <test property="org.eclipse.core.resources.name" value="*.java"/>
-            </and>
+            <adapt type="org.eclipse.core.resources.IProject">
         </adapt>
           </iterate>
            </with>

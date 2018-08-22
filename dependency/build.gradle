@@ -24,6 +24,7 @@ jar {
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
+    destinationDir = file("$rootDir/../plugin/lib")
 }
 
 repositories {
@@ -42,6 +43,7 @@ dependencies {
 	compile "org.eclipse.jetty:jetty-server:9.3.9.v20160517"
 	compile "org.eclipse.jetty.websocket:websocket-api:9.3.9.v20160517"
 	compile "org.eclipse.jetty.websocket:websocket-server:9.3.9.v20160517"
+	
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
 }
