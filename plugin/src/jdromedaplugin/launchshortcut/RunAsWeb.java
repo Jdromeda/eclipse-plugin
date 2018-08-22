@@ -48,11 +48,13 @@ public class RunAsWeb implements ILaunchShortcut {
 					try {
 						if (project.isOpen() && project.hasNature(JdromedaNature.ID)) {
 							project.build(IncrementalProjectBuilder.INCREMENTAL_BUILD, JdromedaBuilder.ID, null, monitor);
-							InternalServer.server.openBrowser();
+							InternalServer.server.startServer(project);
 						}
 						return Status.OK_STATUS;
 					} catch (CoreException e) {
 						return e.getStatus();
+					} catch (Exception e) {
+						return Status.CANCEL_STATUS;
 					}
 				}
 			};
